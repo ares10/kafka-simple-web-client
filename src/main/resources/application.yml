@@ -1,0 +1,18 @@
+kafka:
+  topics:
+    topic1: rcp-request
+    topic2: aaas-notification
+  bootstrap:
+    servers: localhost:9092
+  consumer:
+    auto-commit:
+      enabled: false
+      interval-ms: 100
+    session-timeout-ms: 15000
+    group-id: mygroup
+    auto-offset-reset: earliest
+client:
+  buffer-size: 2
+
+server:
+  port: 8080
