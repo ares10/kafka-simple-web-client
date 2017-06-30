@@ -1,9 +1,8 @@
 kafka:
   topics:
-    topic1: rcp-request
-    topic2: aaas-notification
+    - rcp-request
   bootstrap:
-    servers: localhost:9092
+    servers: ${KAFKA_SERVER_URI:localhost:9092}
   consumer:
     auto-commit:
       enabled: false
@@ -12,7 +11,7 @@ kafka:
     group-id: mygroup
     auto-offset-reset: earliest
 client:
-  buffer-size: 2
+  buffer-size: 100
 
 server:
-  port: 8080
+  port: ${KAFKA_WEB_CLIENT_PORT:8080}

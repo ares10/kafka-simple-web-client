@@ -23,7 +23,7 @@ public class KafkaConsumerConfig {
 	@Value("${kafka.consumer.auto-commit.enabled}")
 	private boolean autoCommitEnabled;
 	@Value("${kafka.consumer.auto-commit.interval-ms}")
-	private Long autoCommitIntervalMs;
+	private Integer autoCommitIntervalMs;
 	@Value("${kafka.consumer.session-timeout-ms}")
 	private String sessionTimeoutMs;
 	@Value("${kafka.consumer.group-id}")
@@ -47,14 +47,6 @@ public class KafkaConsumerConfig {
 
 	@Bean
 	public Map<String, Object> consumerConfigs() {
-
-		System.out.println("Servers:"+bootstrapServers);
-		System.out.println("autoCommitEnabled:"+this.autoCommitEnabled);
-		System.out.println("autoCommitIntervalMs:"+autoCommitIntervalMs);
-		System.out.println("sessionTimeoutMs:"+sessionTimeoutMs);
-		System.out.println("groupId:"+groupId);
-		System.out.println("autoOffsetReset:"+autoOffsetReset);
-
 		Map<String, Object> propsMap = new HashMap<>();
 		propsMap.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, this.bootstrapServers);
 		propsMap.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, this.autoCommitEnabled);
